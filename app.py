@@ -18,25 +18,29 @@ def index():
             bmi = float(request.form['bmi'])
             gender = 1 if request.form['gender'] == 'Male' else 0
             married = 1 if request.form['ever_married'] == 'Yes' else 0
+            residence = request.form['residence_type']
+            smoking = request.form['smoking_status']
 
             numeric_scaled = scaler.transform([[age, avg_glucose, bmi]])[0]
 
-            work_type_vector = [0, 0, 1, 0, 0]   # work_type_Private
-            residence_vector = [1]              # Residence_type_Urban
-            smoking_vector = [0, 0, 1, 0]        # smoking_status_never smoked
+            work_type_vector = [0, 0, 1, 0, 0]  # work_type_Private
+            residence_vector = [1] if residence == 'Urban' else [0]
+
+            smoking_vector = [
+                1 if smoking == 'formerly smoked' else 0,
+                1 if smoking == 'never smoked' else 0,
+                1 if smoking == 'smokes' else 0
+            ]
 
             input_data = np.array([
-                numeric_scaled[0],       # age
+                numeric_scaled[0],  # age
                 hypertension,
                 heart_disease,
-                numeric_scaled[1],       # glucose
-                numeric_scaled[2],       # bmi
+                numeric_scaled[1],  # glucose
+                numeric_scaled[2],  # bmi
                 gender,
-                married,
-                0, 0, 1, 0, 0,           # work_type_Private
-                1,                       # Residence_type_Urban
-                0, 0, 1                  # smoking_status_never smoked
-            ]).reshape(1, -1)
+                married
+            ] + work_type_vector + residence_vector + smoking_vector).reshape(1, -1)
 
             prob = model.predict_proba(input_data)[0][1]
             percent = int(prob * 100)
@@ -65,12 +69,12 @@ def index():
                 </div>
             """
 
-            return render_template('index.html', result=result)
+            return render_template('index.html', result=result, form_data=request.form)
 
         except Exception as e:
-            return render_template('index.html', result=f"Error: {str(e)}")
+            return render_template('index.html', result=f"Error: {str(e)}", form_data=request.form)
 
-    return render_template('index.html', result=None)
+    return render_template('index.html', result=None, form_data={})
 
 if __name__ == '__main__':
     import webbrowser, threading

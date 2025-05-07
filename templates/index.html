@@ -13,38 +13,57 @@
             <div class="form-grid">
                 <div class="field-row">
                     <label>Age:</label>
-                    <input type="number" step="1" name="age" min="0" max="82" required>
+                    <input type="number" step="1" name="age" min="0" max="82" required value="{{ form_data.get('age', '') }}">
                 </div>
                 <div class="field-row">
                     <label>Hypertension:</label>
                     <select name="hypertension">
-                        <option value="0">No</option><option value="1">Yes</option>
+                        <option value="0" {% if form_data.get('hypertension') == '0' %}selected{% endif %}>No</option>
+                        <option value="1" {% if form_data.get('hypertension') == '1' %}selected{% endif %}>Yes</option>
                     </select>
                 </div>
                 <div class="field-row">
                     <label>Heart Disease:</label>
                     <select name="heart_disease">
-                        <option value="0">No</option><option value="1">Yes</option>
+                        <option value="0" {% if form_data.get('heart_disease') == '0' %}selected{% endif %}>No</option>
+                        <option value="1" {% if form_data.get('heart_disease') == '1' %}selected{% endif %}>Yes</option>
                     </select>
                 </div>
                 <div class="field-row">
                     <label>Average Glucose Level (mg/dL):</label>
-                    <input type="number" step="1" name="avg_glucose_level" min="0" max="400" required>
+                    <input type="number" step="1" name="avg_glucose_level" min="0" max="400" required value="{{ form_data.get('avg_glucose_level', '') }}">
                 </div>
                 <div class="field-row">
                     <label>BMI:</label>
-                    <input type="number" step="1" name="bmi" min="10" max="100" required>
+                    <input type="number" step="1" name="bmi" min="10" max="100" required value="{{ form_data.get('bmi', '') }}">
                 </div>
                 <div class="field-row">
                     <label>Gender:</label>
                     <select name="gender">
-                        <option value="Male">Male</option><option value="Female">Female</option>
+                        <option value="Male" {% if form_data.get('gender') == 'Male' %}selected{% endif %}>Male</option>
+                        <option value="Female" {% if form_data.get('gender') == 'Female' %}selected{% endif %}>Female</option>
                     </select>
                 </div>
                 <div class="field-row">
                     <label>Ever Married:</label>
                     <select name="ever_married">
-                        <option value="Yes">Yes</option><option value="No">No</option>
+                        <option value="Yes" {% if form_data.get('ever_married') == 'Yes' %}selected{% endif %}>Yes</option>
+                        <option value="No" {% if form_data.get('ever_married') == 'No' %}selected{% endif %}>No</option>
+                    </select>
+                </div>
+                <div class="field-row">
+                    <label>Residence Type:</label>
+                    <select name="residence_type">
+                        <option value="Urban" {% if form_data.get('residence_type') == 'Urban' %}selected{% endif %}>Urban</option>
+                        <option value="Rural" {% if form_data.get('residence_type') == 'Rural' %}selected{% endif %}>Rural</option>
+                    </select>
+                </div>
+                <div class="field-row">
+                    <label>Smoking Status:</label>
+                    <select name="smoking_status">
+                        <option value="never smoked" {% if form_data.get('smoking_status') == 'never smoked' %}selected{% endif %}>Never Smoked</option>
+                        <option value="formerly smoked" {% if form_data.get('smoking_status') == 'formerly smoked' %}selected{% endif %}>Formerly Smoked</option>
+                        <option value="smokes" {% if form_data.get('smoking_status') == 'smokes' %}selected{% endif %}>Smokes</option>
                     </select>
                 </div>
             </div>
