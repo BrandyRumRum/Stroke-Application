@@ -58,7 +58,7 @@ The model was trained on a Kaggle stroke dataset with over 50,000 records. Featu
 - F1 Score: 0.99  
 - AUC Score: 0.9998  
 
-For model training and evaluation, see the Stroke Prediction Model repo: [Cerebralstroke](https://github.com/BrandyRumRum/Stroke-Prediction-Model)
+For model training and evaluation, see the Stroke Prediction Model repository: [Cerebralstroke](https://github.com/BrandyRumRum/Stroke-Prediction-Model)
 
 ---
 
