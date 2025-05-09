@@ -1,6 +1,6 @@
 # Stroke Risk Prediction Web Application
 
-This is a Flask-based machine learning web application that predicts a patient's risk of stroke based on clinical and lifestyle factors. It uses a trained Random Forest classifier and a clean, responsive user interface.
+This is a Flask-based web application that predicts a patient's risk of stroke based on clinical and lifestyle factors. It uses a trained Random Forest classifier and a minimalistic user interface.
 
 ---
 
@@ -10,7 +10,6 @@ This is a Flask-based machine learning web application that predicts a patient's
 - Powered by a trained Random Forest model  
 - Color-coded risk bar visualization (green to red)   
 - Mobile-friendly UI
-- 
 ---
 
 ##  Project Structure
@@ -59,17 +58,16 @@ The model was trained on a Kaggle stroke dataset with over 50,000 records. Featu
 - F1 Score: 0.99  
 - AUC Score: 0.9998  
 
-For model training and evaluation, see the companion repo: [cerebralstroke](https://github.com/BrandyRumRum/Stroke-Prediction-Model)
+For model training and evaluation, see the Stroke Prediction Model repo: [Cerebralstroke](https://github.com/BrandyRumRum/Stroke-Prediction-Model)
 
 ---
 
 ## Deployed Demo
 
 Try out the live app here:  
-[https://stroke-prediction-applicaiton.onrender.com](https://stroke-prediction-applicaiton.onrender.com)
+[Deployed App](https://stroke-prediction-applicaiton.onrender.com)
 
 ---
-
 
 ## Authors
 
